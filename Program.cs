@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace Practice {
     internal class Program {
         static void Main(string[] args) {
+            StringDuplicates test = new StringDuplicates();
+            test.helperFunction("mississippi");
         }
     }
 }
