@@ -76,7 +76,6 @@ namespace Practice {
             }
         }
 
-
         /**
         Practice Problem: "Print the first NON-duplicate letter in a string"
 
@@ -139,9 +138,6 @@ namespace Practice {
             }
             Console.WriteLine(output);
         }
-
-
-
 
         /**
         Practice Problem: "Check if two strings are mirrored"
@@ -232,12 +228,12 @@ namespace Practice {
         y,1
         they match, therefore it is an anagram.
         what if I use the string.remove function?
-        go letter by letter, and only have to itterate through the list once rather than creating
+        go letter by letter, and only have to iterate through the list once rather than creating
         a bunch of data arrays to compare to eachother?
         eg
         input1: dormitory
         input2: dirtyroom
-        iterrate through input2..
+        iterate through input2..
         does input 1 have a d?
         if yes, input1.remove(d)
         if no, break;
@@ -296,6 +292,66 @@ namespace Practice {
                 result = false; //redundant but clean logic
             }
             Console.WriteLine(result);
+        }
+
+        /**
+        Practice Problem: "Reverse a string using recursion"
+
+        Notes:
+        Simply notate the last character of the string and call the function again with input.last removed
+
+
+        //input: "dog"
+        //expected output: "god"
+
+        //paste this in Program.cs to test
+        static void Main(string[] args) {
+                    StringProblems test = new StringProblems();
+                    test.recursiveReverse("dog"); //replace input string to whatever string you wish to test
+        }
+        */
+        public void recursiveReverse(string input1) {
+            if (input1.Length > 0) {
+                Console.Write(input1.Last());
+                recursiveReverse(input1.Remove(input1.Length - 1));
+            }
+            else {
+                Console.WriteLine();
+            }
+        }
+
+        /**
+        Practice Problem: "Check if a string contains only int values"
+
+        Notes:
+        iterate through the input string and compare character to comperator. 
+        
+        if(string[i] != int value)
+            break;
+
+        or just try to cast the string as an int and catch the error?
+
+        maybe this is considered cheating, but it solves the problem in no time.
+
+
+
+        //input: "12"
+        //expected output: "Input: 12 contains only int values."
+
+        //paste this in Program.cs to test
+        static void Main(string[] args) {
+                    StringProblems test = new StringProblems();
+                    test.intCheck("mississippi"); //replace input string to whatever string you wish to test
+        }
+        */
+        public void intCheck(string input1){
+            try {
+                int test = int.Parse(input1);
+                Console.WriteLine("Input: "+input1+" contains only int values.");
+            }
+            catch(FormatException e) {
+                Console.WriteLine("Input contains a non-int value");
+            }
         }
     }
 }
