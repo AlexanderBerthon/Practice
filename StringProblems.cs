@@ -6,9 +6,8 @@ namespace Practice {
     public class StringProblems {
         public StringProblems() { }
 
-        /**
-        Practice Problem: "Print duplicate letters in a string"
-
+        //"Print duplicate letters in a string"
+        /*
         notes:
         Iterate through string and compare each letter to the rest
         
@@ -40,9 +39,8 @@ namespace Practice {
             Console.WriteLine(output);
         }
 
-        /**
-        Practice Problem: "Print the first duplicate letter in a string"
-
+        //"Print the first duplicate letter in a string"
+        /*
         Notes:
         Mostly the same code as above but end early
         break;?
@@ -76,9 +74,8 @@ namespace Practice {
             }
         }
 
-        /**
-        Practice Problem: "Print the first NON-duplicate letter in a string"
-
+        //"Print the first NON-duplicate letter in a string"
+        /*
         Notes:
         basically exactly the same as above, just change the exit condition. 
         what do you do if all letters are repeated? return empty string? return error? 
@@ -139,8 +136,8 @@ namespace Practice {
             Console.WriteLine(output);
         }
 
-        /**
-        Practice Problem: "Check if two strings are mirrored"
+        //"Check if two strings are mirrored"
+        /*
         example
         input1: dog
         input2: god
@@ -201,9 +198,8 @@ namespace Practice {
             Console.WriteLine(result);
         }
 
-        /**
-        Practice Problem: "Check if two strings are anagrams"
-        
+        //"Check if two strings are anagrams"
+        /*
         notes:
         check length first. the two inputs must be the same length in order to be anagrams. 
         I think the easiest way is to just cheat
@@ -294,11 +290,21 @@ namespace Practice {
             Console.WriteLine(result);
         }
 
-        /**
-        Practice Problem: "Reverse a string using recursion"
-
+        //"Reverse a string using recursion"
+        /*
         Notes:
         Simply notate the last character of the string and call the function again with input.last removed
+
+        not sure if I am stupid or the question is stupid.
+        you only want to use recursion in cases where it makes sense to use it
+        I don't think using recursion to reverse a string is really necessary
+        I am basically using recursion as a glorified loop here
+        so either there is a better way to recursively solve this problem / I am using recursion wrong
+        or
+        this isn't a good problem for recursion, therefore it IS just a glorified loop
+        
+        there are plenty of good solutions to reverse a string, so using recursion is kind of unnecessary? 
+        overkill?
 
 
         //input: "dog"
@@ -320,9 +326,8 @@ namespace Practice {
             }
         }
 
-        /**
-        Practice Problem: "Check if a string contains only int values"
-
+        //"Check if a string contains only int values"
+        /*
         Notes:
         iterate through the input string and compare character to comperator. 
         
