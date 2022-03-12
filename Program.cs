@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 namespace Practice {
     internal class Program {
         static void Main(string[] args) {
+            LinkedListProblems demo = new LinkedListProblems();
+            demo.rotate(4);
         }
     }
 }
