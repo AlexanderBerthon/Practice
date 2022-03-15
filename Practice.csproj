@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayProblems.cs" />
     <Compile Include="CaseSwitch.cs" />
     <Compile Include="LinkedListProblems.cs" />
     <Compile Include="Program.cs" />

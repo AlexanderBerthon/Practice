@@ -17,7 +17,6 @@ namespace Practice {
                 test.AddLast(i);
             }
 
-
             //print unedited list
             Console.WriteLine();
             foreach (int i in test) {
