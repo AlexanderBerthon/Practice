@@ -5,22 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Practice {
-    internal class ArrayProblems {
-        ArrayProblems() { }
+    public class ArrayProblems {
+        public ArrayProblems() { }
 
         //shortest path alg pretty much
         //always start at input[0]
         //values represent number of jumps
         //goal is to get to the last index with the fewest number of jumps
+        //assume there is always a solution
         //e.g. [2, 3, 0, 3, 1]
-        public void jumpgame2(int[] input) {
+        public int jumpgame2(int[] input) {
             //check how many jumps to reach the end
             //check if current index can reach the end
             //if so, win
             //else check options
             //loop number of options # of times
             //check each option, if an option lets you move to the finish, end
-            //recursive function needed..
+            //recursive function needed?
             //how do you decide between 2 options if both options don't get you to the end?
             //pick largest number? = highest number of options? probably?
             //I think in that scenario you just pick the bigger number. doesn't matter really? or does it?
@@ -50,7 +51,7 @@ namespace Practice {
             // I think I am over thinking it a bit.
             // there is literally NO difference between 5 and 4 because they cover the same RANGE
             // i think..
-            // not sure if there is any counter examples out there, but I think this is fine since it is range based and not node based (locked in)
+            // not sure if there is any counter examples, but I think this is fine since it is range based and not node based (locked in)
             // so no need for shortest path algorithm
             // just a weighted algorithm
             // based on position and size
@@ -70,17 +71,37 @@ namespace Practice {
             //
             // 0 1 2 3 4
             // 2 3 1 1 4
-            //
-            //
-            //
-            // 0 1 2 3 4
-            // 2 3 0 1 4
+            //option 1 = (3 + 1) = 4
+            //option 2 = (1 + 2) = 3
+            
 
-
-
+            //works but kind of messy, tons of variables, any way to clean this up?
+            //also check more examples.
+            int solution = 0;
+            int goal = input.Length - 1;
+            int currentIndex = 0;
+            //each loop represents one "hop"
+            while(currentIndex != goal) {
+                int weight = 0;
+                int newIndex = 0;
+                //loop to determine best option (shortest path)
+                for(int i = input[currentIndex]; i > 0; i--) {
+                    if(currentIndex + i == goal) {
+                        newIndex = i + currentIndex;
+                        i = 0;
+                    }
+                    else if(input[i+currentIndex] + (i+currentIndex) >= weight) {
+                        weight = input[i + currentIndex] + (i + currentIndex);
+                        newIndex = i+currentIndex;
+                    }
+                }
+                solution++;
+                currentIndex = newIndex;
+            }
+            return solution;
 
         }
 
-
     }
 }
+
