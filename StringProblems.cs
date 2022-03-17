@@ -358,5 +358,128 @@ namespace Practice {
                 Console.WriteLine("Input contains a non-int value");
             }
         }
+
+
+        /// Given an integer, convert it to Roman Numeral
+        /// a
+        /// Write the roman numeral character with the largest character first followed by the smaller characters
+        /// greatest common denominator?
+        /// 1       = I
+        /// 5       = V
+        /// 10      = X
+        /// 11      = X + I ~ XI rather than VVI (if that makes sense)
+        /// 15      = XV
+        /// 20      = XX
+        /// 30      = XXX
+        /// 40      = XXXX
+        /// 50      = L
+        /// 100     = C
+        /// 500     = D
+        /// 1000    = M
+        /// 
+        /// EXCEPTIONS (hard coded)
+        /// 4 - IV
+        /// 9 - IX
+        /// 40 - XL
+        /// 90 - XC
+        /// 400 - CD
+        /// 900 - CM
+        /// 
+
+        //problem can be solved with % ? 
+        //largest to smallest? 
+        //so check 6 exception cases first
+        //else divide and % 1000, if division returns a whole number, add an M : subtract? or set input = remainder?
+        //else divide and % 500, if division returns a whole number, add an D
+        //else divide and % 100, if division returns a whole number, add an C
+        //else divide and % 50, if division returns a whole number, add an L
+        //else divide and % 10, if division returns a whole number, add an X
+        //else divide and % 5, if division returns a whole number, add an V
+        //else divide and % 1, if division returns a whole number, add an I
+
+        //2022
+        //MMXXII
+        //2222
+        //MMCCXXII
+        public void intToRoman(int input) {
+            String solution = "";
+            int storage = 0;
+            if(input == 4) {
+                solution = "IV";
+            }
+            else if(input == 9) {
+                solution = "IX";
+            }
+            else if(input == 40) {
+                solution = "XL";
+            }
+            else if(input == 90) {
+                solution = "XC";
+            }
+            else if(input == 400) {
+                solution = "CD";
+            }
+            else if (input == 900) {
+                solution = "CM";
+            }
+            else {
+                storage = input / 1000;
+                if(storage > 0) {
+                    for(int i = storage; i>0; i--) {
+                        solution+="M";
+                    }
+                    input = input % 1000;
+                }
+
+                storage = input / 500;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "D";
+                    }
+                    input = input % 500;
+                }
+
+                storage = input / 100;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "C";
+                    }
+                    input = input % 100;
+                }
+
+                storage = input / 50;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "L";
+                    }
+                    input = input % 50;
+                }
+
+                storage = input / 10;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "X";
+                    }
+                    input = input % 10;
+                }
+
+                storage = input / 5;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "V";
+                    }
+                    input = input % 5;
+                }
+
+                storage = input / 1;
+                if (storage > 0) {
+                    for (int i = storage; i > 0; i--) {
+                        solution += "I";
+                    }
+                    input = input % 1;
+                }
+            }
+            Console.WriteLine(solution);
+        }
     }
 }

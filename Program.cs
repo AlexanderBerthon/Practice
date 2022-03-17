@@ -9,18 +9,10 @@ using System.Threading.Tasks;
 namespace Practice {
     internal class Program {
         static void Main(string[] args) {
-            ArrayProblems demo = new ArrayProblems();
+            StringProblems demo = new StringProblems();
 
-            //2, 3, 0, 3, 1
-            //2, 1, 2, 1, 1
-            //5, 4, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1 
-            int[] input = { 2, 3, 0, 3, 1 };
+            demo.intToRoman(19);
 
-            for(int i = 0; i < input.Length; i++) {
-                Console.Write(input[i]+" ");
-            }
-            Console.WriteLine("Shortest path = ");
-            Console.WriteLine(demo.jumpgame2(input));
         }
     }
 }
