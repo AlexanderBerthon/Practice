@@ -29,9 +29,11 @@ namespace Practice {
                 }
             }
 
+            
+
             storage.Sort();
             //[0, 3]
-            for(int i = storage.Count; i > 1; i--) {
+            for(int i = storage.Count-1; i > 0; i--) {
                 if (storage[i] + storage[i-1] == target) {
                     solution = "(" + i + ", " + (i - 1) + ")";
                 }
