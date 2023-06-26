@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 
 namespace Practice {
-    internal class Program {
+    public class Program {
         static void Main(string[] args) {
-            StringProblems demo = new StringProblems();
+            TwoSum test = new TwoSum();
+            int[] nums = { 4, 3, 0 };
+            int target = 3;
 
-            demo.intToRoman(19);
-
+            Console.WriteLine(test.solve(nums, target));
         }
     }
 }
