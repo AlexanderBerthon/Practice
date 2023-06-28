@@ -9,11 +9,24 @@ using System.Threading.Tasks;
 namespace Practice {
     public class Program {
         static void Main(string[] args) {
-            TwoSum test = new TwoSum();
-            int[] nums = { 4, 3, 0 };
-            int target = 3;
+            //Palindrome test = new Palindrome();
+            //Console.WriteLine(test.solve(111));
 
-            Console.WriteLine(test.solve(nums, target));
+
+            Console.WriteLine(123);
+            int value = 123;
+            string original = value.ToString();
+            Console.WriteLine(original);
+            string reverse = (original.Reverse()).ToString();
+            Console.WriteLine(reverse);
+
+            if (original.Equals(reverse)) {
+                Console.WriteLine("TRUE");
+                }
+            else {
+                Console.WriteLine("FALSE");
+            }
+
         }
     }
 }
