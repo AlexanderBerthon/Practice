@@ -35,26 +35,23 @@ namespace Practice {
 
         public Boolean solve(int value) {
             Boolean result = false;
-
-            Char[] original = (value.ToString()).ToCharArray();
-            Stack<Char> stack = new Stack<char>();
-            Char[] reverse = new char[original.Length];    
-
-            for (int i = 0; i<original.Length; i++) {
-                stack.Push(original[i]);
+            string temp = value.ToString();
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in temp) {
+                stack.Push(c);
             }
 
-            for(int i = 0; i<original.Length; i++) {
-                reverse[i] = stack.Pop();
+            temp = "";
+
+            while (stack.Count > 0) {
+                temp += stack.Pop();
             }
 
-            if(original.Equals(reverse)) {
+            int reverse = int.Parse(temp);
+
+            if (value.CompareTo(reverse) == 0) {
                 result = true;
             }
-            else {
-                result = false;
-            }
-
             return result;
         }
 
