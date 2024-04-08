@@ -13,6 +13,15 @@ using System.Dynamic;
 using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel.Design;
 
+/*
+TODO
+ - fix 2d array iteration
+ - fix potential backtracking issue
+ - change test cases / break it
+ - performance?
+    - test performance of current itteration vs adding if(!solution) to DFS function
+*/
+
 namespace Practice {
     public class Program {
         static void Main(string[] args) {
@@ -22,18 +31,14 @@ namespace Practice {
             char[] two   = { 'd', 'e', 'f' };
             char[] three = { 'g', 'h', 'i' };
             grid = new char[][] {one, two, three};
-
+          
             //initialize target
             string target = "abehi";
 
             //result variable to return
             bool result = false;
 
-
-
-            //I don't think this works?
-            //if 'a' was in the second row I think the program blows up
-            for (int i = 0; i < grid.Rank; i++) {
+            for (int i = 0; i < grid.Length; i++) {
                 Console.WriteLine(i);
                 for (int j = 0; j < grid[i].Length; j++) {
                     if (grid[i][j] == target[0]) {
@@ -50,8 +55,26 @@ namespace Practice {
 
 
             //Depth first search 
+            /*
+             * This function/method attempts to find the next character in the target sequence by 
+             * comparing it to each of the 4 potential 'adjacent' elements in the 2d array. 
+             * 
+             * This function calls itself recursively (depth first) until the end of the sequence
+             * is found or until all possible solutions have been checked
+             * 
+             * returns:
+             * true - if a solution exists
+             * false - if no solution
+            */
             bool DFS(int rank, int index, int characterIndex) {
                 Console.Write(target[characterIndex]); //FOR TESTING CAN DELETE 
+
+                //if I surround each of these try blocks in a ..
+                //if(!result){}
+                //then I could end the recursion early once a single solution is found
+                //but it would look really janky
+                //is there a better way?
+                //also test the performance before and after with loaded test cases
 
                 //left adjacent index
                 try {
