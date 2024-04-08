@@ -15,71 +15,59 @@ using System.ComponentModel.Design;
 
 /*
 TODO
- - fix 2d array iteration
- - fix potential backtracking issue
+ - fix backtracking issue
+    - abababababababababababababa works
  - change test cases / break it
- - performance?
-    - test performance of current itteration vs adding if(!solution) to DFS function
 */
 
 namespace Practice {
     public class Program {
-        static void Main(string[] args) {
-            //create the grid
-            char[][] grid;
-            char[] one   = { 'a', 'b', 'c' };
-            char[] two   = { 'd', 'e', 'f' };
-            char[] three = { 'g', 'h', 'i' };
-            grid = new char[][] {one, two, three};
-          
-            //initialize target
-            string target = "abehi";
+    static void Main(string[] args) {
+        //create the grid
+        char[][] grid;
+        char[] one   = { 'a', 'b', 'c' };
+        char[] two   = { 'd', 'e', 'f' };
+        char[] three = { 'g', 'h', 'i' };
+        grid = new char[][] { one, two, three };
 
-            //result variable to return
-            bool result = false;
+        //initialize target
+        string target = "abcfedghi";
 
-            for (int i = 0; i < grid.Length; i++) {
-                Console.WriteLine(i);
-                for (int j = 0; j < grid[i].Length; j++) {
-                    if (grid[i][j] == target[0]) {
-                        //write recursive function here
-                        if (DFS(i, j, 1)) {
-                            break;
-                        }
+        //result variable to return
+        bool result = false;
+
+        for (int i = 0; i < grid.Length; i++) {
+            for (int j = 0; j < grid[i].Length; j++) {
+                if (grid[i][j] == target[0]) {
+                    //write recursive function here
+                    if (DFS(i, j, 1)) {
+                        break;
                     }
                 }
             }
-            Console.WriteLine(result);
+        }
+        Console.WriteLine(result);
+        //end of runnable program
 
-            //end of runnable program
 
-
-            //Depth first search 
-            /*
-             * This function/method attempts to find the next character in the target sequence by 
-             * comparing it to each of the 4 potential 'adjacent' elements in the 2d array. 
-             * 
-             * This function calls itself recursively (depth first) until the end of the sequence
-             * is found or until all possible solutions have been checked
-             * 
-             * returns:
-             * true - if a solution exists
-             * false - if no solution
-            */
-            bool DFS(int rank, int index, int characterIndex) {
-                Console.Write(target[characterIndex]); //FOR TESTING CAN DELETE 
-
-                //if I surround each of these try blocks in a ..
-                //if(!result){}
-                //then I could end the recursion early once a single solution is found
-                //but it would look really janky
-                //is there a better way?
-                //also test the performance before and after with loaded test cases
-
-                //left adjacent index
+        //Depth first search 
+        /*
+            * This function/method attempts to find the next character in the target sequence by 
+            * comparing it to each of the 4 potential 'adjacent' elements in the 2d array. 
+            * 
+            * This function calls itself recursively (depth first) until the end of the sequence
+            * is found or until all possible solutions have been checked
+            * 
+            * returns:
+            * true - if a solution exists
+            * false - if no solution
+        */
+        bool DFS(int rank, int index, int characterIndex) {
+            //left adjacent index
+            if (!result) {
                 try {
                     if (grid[rank][index - 1] == target[characterIndex]) {
-                        if(characterIndex == target.Length - 1) {
+                        if (characterIndex == target.Length - 1) {
                             result = true;
                         }
                         else {
@@ -88,8 +76,9 @@ namespace Practice {
                     }
                 }
                 catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-
-                //right adjacent index
+            }
+            //right adjacent index
+            if (!result) {
                 try {
                     if (grid[rank][index + 1] == target[characterIndex]) {
                         if (characterIndex == target.Length - 1) {
@@ -101,8 +90,9 @@ namespace Practice {
                     }
                 }
                 catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-
-                //top adjacent index
+            }
+            //top adjacent index
+            if (!result) {
                 try {
                     if (grid[rank - 1][index] == target[characterIndex]) {
                         if (characterIndex == target.Length - 1) {
@@ -114,8 +104,9 @@ namespace Practice {
                     }
                 }
                 catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-
-                //bot adjacent index
+            }
+            //bot adjacent index
+            if (!result) {
                 try {
                     if (grid[rank + 1][index] == target[characterIndex]) {
                         if (characterIndex == target.Length - 1) {
@@ -127,11 +118,11 @@ namespace Practice {
                     }
                 }
                 catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-
-                return result;
             }
-        }
 
+            return result;
+        }
+    }
     }
 }
     /*
