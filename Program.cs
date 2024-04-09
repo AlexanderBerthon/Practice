@@ -31,7 +31,7 @@ namespace Practice {
         grid = new char[][] { one, two, three };
 
         //initialize target
-        string target = "abcfedghi";
+        string target = "aei";
 
         //result variable to return
         bool result = false;
@@ -40,7 +40,7 @@ namespace Practice {
             for (int j = 0; j < grid[i].Length; j++) {
                 if (grid[i][j] == target[0]) {
                     //write recursive function here
-                    if (DFS(i, j, 1)) {
+                    if (DFS(i, j, 1, "")) {
                         break;
                     }
                 }
@@ -62,62 +62,71 @@ namespace Practice {
             * true - if a solution exists
             * false - if no solution
         */
-        bool DFS(int rank, int index, int characterIndex) {
+        bool DFS(int rank, int index, int characterIndex, string previous) {
+                Console.WriteLine(grid[rank][index]);
             //left adjacent index
             if (!result) {
-                try {
-                    if (grid[rank][index - 1] == target[characterIndex]) {
-                        if (characterIndex == target.Length - 1) {
-                            result = true;
+                    if (!previous.Equals("left")) {
+                        try {
+                            if (grid[rank][index - 1] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank, index - 1, characterIndex + 1, "right");
+                                }
+                            }
                         }
-                        else {
-                            DFS(rank, index - 1, characterIndex + 1);
-                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
                     }
-                }
-                catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
             }
             //right adjacent index
             if (!result) {
-                try {
-                    if (grid[rank][index + 1] == target[characterIndex]) {
-                        if (characterIndex == target.Length - 1) {
-                            result = true;
+                    if (!previous.Equals("right")) {
+                        try {
+                            if (grid[rank][index + 1] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank, index + 1, characterIndex + 1, "left");
+                                }
+                            }
                         }
-                        else {
-                            DFS(rank, index + 1, characterIndex + 1);
-                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
                     }
-                }
-                catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
             }
             //top adjacent index
             if (!result) {
-                try {
-                    if (grid[rank - 1][index] == target[characterIndex]) {
-                        if (characterIndex == target.Length - 1) {
-                            result = true;
+                    if (!previous.Equals("top")){
+                        try {
+                            if (grid[rank - 1][index] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank - 1, index, characterIndex + 1, "bottom");
+                                }
+                            }
                         }
-                        else {
-                            DFS(rank - 1, index, characterIndex + 1);
-                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
                     }
-                }
-                catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
             }
             //bot adjacent index
             if (!result) {
-                try {
-                    if (grid[rank + 1][index] == target[characterIndex]) {
-                        if (characterIndex == target.Length - 1) {
-                            result = true;
+                    if (!previous.Equals("bottom")) {
+                        try {
+                            if (grid[rank + 1][index] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank + 1, index, characterIndex + 1, "top");
+                                }
+                            }
                         }
-                        else {
-                            DFS(rank + 1, index, characterIndex + 1);
-                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
                     }
-                }
-                catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
             }
 
             return result;
