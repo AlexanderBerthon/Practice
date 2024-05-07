@@ -14,10 +14,13 @@ using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel.Design;
 
 /*
+    
+    Problem: 'Find string in 2d array' ?
     Given a grid of characters and a string, return true if the string exists within the data grid.
     each sequential character of the string must be adjacent to the previous character and each character
     can only be used once.
     
+    //visual representation, not required for code execution
     string = mouse
     [m, o, u]       [M, O, U]
     [w, a, s] -->   [ ,  , S]
@@ -31,55 +34,41 @@ using System.ComponentModel.Design;
     [m, u, f]      [M, U, F]
 
     FALSE
-
 */
-
-
 namespace Practice {
-    public class Program {
-        static void Main(string[] args) {
-            LinkedListProblems test = new LinkedListProblems();
+    public class FindStringIn2dArray {
 
-            FindStringIn2dArray test2 = new FindStringIn2dArray();
+        public FindStringIn2dArray() {
+            //create the grid
+            char[][] grid;
+            char[] one = { 'a', 'b', 'c' };
+            char[] two = { 'd', 'e', 'f' };
+            char[] three = { 'g', 'h', 'i' };
+            grid = new char[][] { one, two, three };
 
+            //initialize target
+            string target = "adebcfihg";
 
-
+            //result variable to return
+            bool result = false;
         }
-    }
-}
-/*
-namespace Practice {
-    public class Program {
-    static void Main(string[] args) {
-        //create the grid
-        char[][] grid;
-        char[] one   = { 'a', 'b', 'c' };
-        char[] two   = { 'd', 'e', 'f' };
-        char[] three = { 'g', 'h', 'i' };
-        grid = new char[][] { one, two, three };
 
-        //initialize target
-        string target = "adgb";
-
-        //result variable to return
-        bool result = false;
-
-        for (int i = 0; i < grid.Length; i++) {
-            for (int j = 0; j < grid[i].Length; j++) {
-                if (grid[i][j] == target[0]) {
-                    //write recursive function here
-                    if (DFS(i, j, 1, "")) {
-                        break;
+        public string solve() {
+            for (int i = 0; i < grid.Length; i++) {
+                for (int j = 0; j < grid[i].Length; j++) {
+                    if (grid[i][j] == target[0]) {
+                        //write recursive function here
+                        if (DFS(i, j, 1, "")) {
+                            break;
+                        }
                     }
                 }
             }
+            return result;
         }
-        Console.WriteLine(result);
-        //end of runnable program
-
 
         //Depth first search 
-        *//*
+        /*
             * This function/method attempts to find the target sequence by recursively
             * comparing the current element to each 'adjacent' element in the 2d array. 
             * 
@@ -90,8 +79,8 @@ namespace Practice {
             * returns:
             * true - if the full sequence exists in the 2d array
             * false - if no/incomplete sequence
-        *//*
-        bool DFS(int rank, int index, int characterIndex, string previous) {
+        */
+        private bool DFS(int rank, int index, int characterIndex, string previous) {
             //check left adjacent index
             if (!result) {
                 if (!previous.Equals("left")) {
@@ -126,7 +115,7 @@ namespace Practice {
             }
             //check top adjacent index
             if (!result) {
-                if (!previous.Equals("top")){
+                if (!previous.Equals("top")) {
                     try {
                         if (grid[rank - 1][index] == target[characterIndex]) {
                             if (characterIndex == target.Length - 1) {
@@ -160,5 +149,4 @@ namespace Practice {
             return result;
         }
     }
-    }
-}*/
+}
