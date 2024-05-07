@@ -38,7 +38,9 @@ using System.ComponentModel.Design;
 namespace Practice {
     public class FindStringIn2dArray {
 
-        public FindStringIn2dArray() {
+        public FindStringIn2dArray() {}
+
+        public bool solve() {
             //create the grid
             char[][] grid;
             char[] one = { 'a', 'b', 'c' };
@@ -51,9 +53,7 @@ namespace Practice {
 
             //result variable to return
             bool result = false;
-        }
 
-        public string solve() {
             for (int i = 0; i < grid.Length; i++) {
                 for (int j = 0; j < grid[i].Length; j++) {
                     if (grid[i][j] == target[0]) {
@@ -65,88 +65,89 @@ namespace Practice {
                 }
             }
             return result;
-        }
 
-        //Depth first search 
-        /*
-            * This function/method attempts to find the target sequence by recursively
-            * comparing the current element to each 'adjacent' element in the 2d array. 
-            * 
-            * This function calls itself recursively (depth first) when the next element in the sequence
-            * is found in an ajacent location, until the full sequence is verified or a dead end is reached
-            * after checking all available ajacent values
-            * 
-            * returns:
-            * true - if the full sequence exists in the 2d array
-            * false - if no/incomplete sequence
-        */
-        private bool DFS(int rank, int index, int characterIndex, string previous) {
-            //check left adjacent index
-            if (!result) {
-                if (!previous.Equals("left")) {
-                    try {
-                        if (grid[rank][index - 1] == target[characterIndex]) {
-                            if (characterIndex == target.Length - 1) {
-                                result = true;
-                            }
-                            else {
-                                DFS(rank, index - 1, characterIndex + 1, "right");
-                            }
-                        }
-                    }
-                    catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-                }
-            }
-            //check right adjacent index
-            if (!result) {
-                if (!previous.Equals("right")) {
-                    try {
-                        if (grid[rank][index + 1] == target[characterIndex]) {
-                            if (characterIndex == target.Length - 1) {
-                                result = true;
-                            }
-                            else {
-                                DFS(rank, index + 1, characterIndex + 1, "left");
-                            }
-                        }
-                    }
-                    catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-                }
-            }
-            //check top adjacent index
-            if (!result) {
-                if (!previous.Equals("top")) {
-                    try {
-                        if (grid[rank - 1][index] == target[characterIndex]) {
-                            if (characterIndex == target.Length - 1) {
-                                result = true;
-                            }
-                            else {
-                                DFS(rank - 1, index, characterIndex + 1, "bottom");
-                            }
-                        }
-                    }
-                    catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-                }
-            }
-            //check bot adjacent index
-            if (!result) {
-                if (!previous.Equals("bottom")) {
-                    try {
-                        if (grid[rank + 1][index] == target[characterIndex]) {
-                            if (characterIndex == target.Length - 1) {
-                                result = true;
-                            }
-                            else {
-                                DFS(rank + 1, index, characterIndex + 1, "top");
-                            }
-                        }
-                    }
-                    catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
-                }
-            }
 
-            return result;
+            //Depth first search 
+            /*
+                * This function/method attempts to find the target sequence by recursively
+                * comparing the current element to each 'adjacent' element in the 2d array. 
+                * 
+                * This function calls itself recursively (depth first) when the next element in the sequence
+                * is found in an ajacent location, until the full sequence is verified or a dead end is reached
+                * after checking all available ajacent values
+                * 
+                * returns:
+                * true - if the full sequence exists in the 2d array
+                * false - if no/incomplete sequence
+            */
+            bool DFS(int rank, int index, int characterIndex, string previous) {
+                //check left adjacent index
+                if (!result) {
+                    if (!previous.Equals("left")) {
+                        try {
+                            if (grid[rank][index - 1] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank, index - 1, characterIndex + 1, "right");
+                                }
+                            }
+                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
+                    }
+                }
+                //check right adjacent index
+                if (!result) {
+                    if (!previous.Equals("right")) {
+                        try {
+                            if (grid[rank][index + 1] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank, index + 1, characterIndex + 1, "left");
+                                }
+                            }
+                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
+                    }
+                }
+                //check top adjacent index
+                if (!result) {
+                    if (!previous.Equals("top")) {
+                        try {
+                            if (grid[rank - 1][index] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank - 1, index, characterIndex + 1, "bottom");
+                                }
+                            }
+                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
+                    }
+                }
+                //check bot adjacent index
+                if (!result) {
+                    if (!previous.Equals("bottom")) {
+                        try {
+                            if (grid[rank + 1][index] == target[characterIndex]) {
+                                if (characterIndex == target.Length - 1) {
+                                    result = true;
+                                }
+                                else {
+                                    DFS(rank + 1, index, characterIndex + 1, "top");
+                                }
+                            }
+                        }
+                        catch (IndexOutOfRangeException e) { } //ignore and try other adjacent option
+                    }
+                }
+
+                return result;
+            }
         }
     }
 }
