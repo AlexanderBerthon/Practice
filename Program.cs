@@ -12,16 +12,20 @@ using System.Security.Cryptography.X509Certificates;
 using System.Dynamic;
 using static System.Net.Mime.MediaTypeNames;
 using System.ComponentModel.Design;
-
+using System.Runtime.CompilerServices;
+using System.Globalization;
 
 namespace Practice {
     public class Program {
         static void Main(string[] args) {
-            FindStringIn2dArray test2 = new FindStringIn2dArray();
-            Console.WriteLine(test2.solve());
+
+            sortByCustomMapping test = new sortByCustomMapping();
+            test.solve();
+
         }
     }
 }
+
 
 /*
 Program Guide
