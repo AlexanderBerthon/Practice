@@ -45,11 +45,13 @@
   <ItemGroup>
     <Compile Include="ArrayProblems.cs" />
     <Compile Include="CaseSwitch.cs" />
+    <Compile Include="FindStringIn2dArray.cs" />
     <Compile Include="Palindrome.cs" />
     <Compile Include="LinkedListProblems.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegularExpressions.cs" />
+    <Compile Include="sortByCustomMapping.cs" />
     <Compile Include="StringProblems.cs" />
     <Compile Include="TwoSum.cs" />
   </ItemGroup>
