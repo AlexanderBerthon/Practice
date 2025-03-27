@@ -18,9 +18,11 @@ using System.Globalization;
 namespace Practice {
     public class Program {
         static void Main(string[] args) {
-
-            sortByCustomMapping test = new sortByCustomMapping();
-            test.solve();
+            System.Console.WriteLine(FizzBuzz.Solve(34));
+            System.Console.WriteLine(FizzBuzz.Solve(0));
+            System.Console.WriteLine(FizzBuzz.Solve(5));
+            System.Console.WriteLine(FizzBuzz.Solve(6));
+            System.Console.WriteLine(FizzBuzz.Solve(15));
 
         }
     }
