@@ -47,6 +47,7 @@
     <Compile Include="CaseSwitch.cs" />
     <Compile Include="FindStringIn2dArray.cs" />
     <Compile Include="FizzBuzz.cs" />
+    <Compile Include="MinimumIndexValidSplit.cs" />
     <Compile Include="Palindrome.cs" />
     <Compile Include="LinkedListProblems.cs" />
     <Compile Include="Program.cs" />

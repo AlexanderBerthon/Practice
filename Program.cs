@@ -18,17 +18,18 @@ using System.Globalization;
 namespace Practice {
     public class Program {
         static void Main(string[] args) {
-            System.Console.WriteLine(FizzBuzz.Solve(34));
-            System.Console.WriteLine(FizzBuzz.Solve(0));
-            System.Console.WriteLine(FizzBuzz.Solve(5));
-            System.Console.WriteLine(FizzBuzz.Solve(6));
-            System.Console.WriteLine(FizzBuzz.Solve(15));
+
+            int[] arr1 = { 1, 2, 2, 2 };
+            int[] arr2 = { 2, 1, 3, 1, 1, 1, 7, 1, 2, 1 };
+            int[] arr3 = { 3, 3, 3, 3, 7, 2, 2 };
+
+            System.Console.WriteLine(MinimumIndexValidSplit.Solve(arr1));
+            System.Console.WriteLine(MinimumIndexValidSplit.Solve(arr2));
+            System.Console.WriteLine(MinimumIndexValidSplit.Solve(arr3));
 
         }
     }
 }
-
-
 /*
 Program Guide
  1. write solution in separate c# class file
